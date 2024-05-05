@@ -24,6 +24,7 @@ NuevoExp <- paste0("~/buckets/b1/exp/", Experimiento_id, "/")
 dir.create(NuevoExp, showWarnings = FALSE)
 CA1 <- paste0("CA0","_", Experimiento_id)
 DR1 <- paste0("DR0","_", Experimiento_id)
+DT1 <- paste0("DT0","_", Experimiento_id)
 CT1 <- paste0("DT0","_", Experimiento_id)
 FE1 <- paste0("FE0","_", Experimiento_id)
 HT1 <- paste0("HT1","_", Experimiento_id)
@@ -340,7 +341,7 @@ corrida_guantesblancos_202109 <- function( pnombrewf, pvirgen=FALSE )
   if( -1 == exp_wf_init( pnombrewf, pvirgen) ) return(0) # linea fija
 
   #aca también toque
-  
+
   DT_incorporar_dataset_default( DT1, "competencia_2024.csv.gz")
   CA_catastrophe_default( CA1, DT1 )
 
