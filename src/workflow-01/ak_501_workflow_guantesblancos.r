@@ -19,9 +19,12 @@ envg <- env()
 
 Experimiento_id <- "_ak_000x"
 # la idea es poner la numeración que nos cierre
-NuevoExp <- paste0("~/buckets/b1/exp/", Experimiento_id, "/")
+NuevoExp <- paste0("~/buckets/b1/exp/","Experimento_", Experimiento_id, "/")
+NuevoFlow <- paste0("~/buckets/b1/flow/",Experimiento_id,"/")
+NuevoFlowLocal <- paste0("~/flow/",Experimiento_id,"/")
 # setwd("~/buckets/b1/")
 dir.create(NuevoExp, showWarnings = FALSE)
+dir.create(NuevoFlow, showWarnings = FALSE)
 CA1 <- paste0("CA0","_", Experimiento_id)
 DR1 <- paste0("DR0","_", Experimiento_id)
 DT1 <- paste0("DT0","_", Experimiento_id)
@@ -37,8 +40,8 @@ ZZ2 <- paste0("ZZ2","_", Experimiento_id)
 envg$EXPENV <- list()
 # envg$EXPENV$exp_dir <- "~/buckets/b1/exp/"
 envg$EXPENV$exp_dir <- NuevoExp
-envg$EXPENV$wf_dir <- "~/buckets/b1/flow/"
-envg$EXPENV$wf_dir_local <- "~/flow/"
+envg$EXPENV$wf_dir <- NuevoFlow
+envg$EXPENV$wf_dir_local <- NuevoFlowLocal
 envg$EXPENV$repo_dir <- "~/labo2024v1/"
 envg$EXPENV$datasets_dir <- "~/buckets/b1/datasets/"
 envg$EXPENV$arch_sem <- "mis_semillas.txt"
