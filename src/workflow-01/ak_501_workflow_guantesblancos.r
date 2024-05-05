@@ -13,8 +13,29 @@ require("ParamHelpers")
 # creo environment global
 envg <- env()
 
+#######################################################################################
+# AK Creo las variables para mi gusto y seguimiento
+# copiado con estilo del script Z505
+
+Experimiento_id <- "_ak_000x"
+# la idea es poner la numeración que nos cierre
+NuevoExp <- paste0("~/buckets/b1/exp/", Experimiento_id, "/")
+# setwd("~/buckets/b1/")
+dir.create(NuevoExp, showWarnings = FALSE)
+CA1 <- paste0("CA0","_", Experimiento_id)
+DR1 <- paste0("DR0","_", Experimiento_id)
+CT1 <- paste0("DT0","_", Experimiento_id)
+FE1 <- paste0("FE0","_", Experimiento_id)
+HT1 <- paste0("HT1","_", Experimiento_id)
+HT2 <- paste0("HT2","_", Experimiento_id)
+TS1 <- paste0("TS1","_", Experimiento_id)
+TS2 <- paste0("TS2","_", Experimiento_id)
+ZZ1 <- paste0("ZZ1","_", Experimiento_id)
+ZZ2 <- paste0("ZZ2","_", Experimiento_id)
+
 envg$EXPENV <- list()
-envg$EXPENV$exp_dir <- "~/buckets/b1/exp/"
+# envg$EXPENV$exp_dir <- "~/buckets/b1/exp/"
+envg$EXPENV$exp_dir <- NuevoExp
 envg$EXPENV$wf_dir <- "~/buckets/b1/flow/"
 envg$EXPENV$wf_dir_local <- "~/flow/"
 envg$EXPENV$repo_dir <- "~/labo2024v1/"
@@ -318,18 +339,18 @@ corrida_guantesblancos_202109 <- function( pnombrewf, pvirgen=FALSE )
 {
   if( -1 == exp_wf_init( pnombrewf, pvirgen) ) return(0) # linea fija
 
-  DT_incorporar_dataset_default( "DT0001", "competencia_2024.csv.gz")
-  CA_catastrophe_default( "CA0001", "DT0001" )
+  DT_incorporar_dataset_default( DT1, "competencia_2024.csv.gz")
+  CA_catastrophe_default( CA1, DT1 )
 
-  DR_drifting_guantesblancos( "DR0001", "CA0001" )
-  FE_historia_guantesblancos( "FE0001", "DR0001" )
+  DR_drifting_guantesblancos( DR1, CA1 )
+  FE_historia_guantesblancos( FE1, DR1 )
 
-  TS_strategy_guantesblancos_202109( "TS0001", "FE0001" )
+  TS_strategy_guantesblancos_202109( TS1, FE1 )
 
-  HT_tuning_guantesblancos( "HT0001", "TS0001" )
+  HT_tuning_guantesblancos( HT1, TS1 )
 
   # El ZZ depente de HT y TS
-  ZZ_final_guantesblancos( "ZZ0001", c("HT0001","TS0001") )
+  ZZ_final_guantesblancos( ZZ1, c(HT1,TS1) )
 
 
   exp_wf_end( pnombrewf, pvirgen ) # linea fija
@@ -346,12 +367,12 @@ corrida_guantesblancos_202107 <- function( pnombrewf, pvirgen=FALSE )
   if( -1 == exp_wf_init( pnombrewf, pvirgen) ) return(0) # linea fija
 
   # Ya tengo corrido FE0001 y parto de alli
-  TS_strategy_guantesblancos_202107( "TS0002", "FE0001" )
+  TS_strategy_guantesblancos_202107( TS2, FE1 )
 
-  HT_tuning_guantesblancos( "HT0002", "TS0002" )
+  HT_tuning_guantesblancos( HT2, TS2 )
 
   # El ZZ depente de HT y TS
-  ZZ_final_guantesblancos( "ZZ0002", c("HT0002", "TS0002") )
+  ZZ_final_guantesblancos( ZZ2, c(HT2, TS2) )
 
 
   exp_wf_end( pnombrewf, pvirgen ) # linea fija
