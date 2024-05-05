@@ -16,7 +16,7 @@ envg <- env()
 # AK Creo las variables para mi gusto y seguimiento
 # copiado con estilo del script Z505
 
-Experimiento_id <- "_Exp17_ak_400"
+Experimiento_id <- "_Exp17_ak_600" # Acá pongo el número de nuestro experimento
 # la idea es poner la numeración que nos cierre
 NuevoExp <- paste0("~/buckets/b1/exp/","Experimento_", Experimiento_id, "/")
 NuevoFlow <- paste0("~/buckets/b1/flow/",Experimiento_id,"/")
@@ -254,7 +254,7 @@ HT_tuning_guantesblancos <- function( pmyexp, pinputexps, pserver="local")
 {
   if( -1 == (param_local <- exp_init( pmyexp, pinputexps, pserver ))$resultado ) return( 0 )# linea fija
 
-  param_local$meta$script <- "/src/workflow-01/Exp17_561_HT_lightgbm_400.r"
+  param_local$meta$script <- "/src/workflow-01/Exp17_561_HT_lightgbm_600.r"   # Acá ajusto también el nombre del experimento
 
   # En caso que se haga cross validation, se usa esta cantidad de folds
   param_local$lgb_crossvalidation_folds <- 5
