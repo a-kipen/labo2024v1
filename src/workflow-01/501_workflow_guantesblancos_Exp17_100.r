@@ -16,7 +16,7 @@ envg <- env()
 # AK Creo las variables para mi gusto y seguimiento
 # copiado con estilo del script Z505
 
-Experimiento_id <- "_Exp17_100x"
+Experimiento_id <- "_Exp17_ak_100"
 # la idea es poner la numeración que nos cierre
 NuevoExp <- paste0("~/buckets/b1/exp/","Experimento_", Experimiento_id, "/")
 NuevoFlow <- paste0("~/buckets/b1/flow/",Experimiento_id,"/")
@@ -39,7 +39,7 @@ ZZ2 <- paste0("ZZ2","_", Experimiento_id)
 envg$EXPENV <- list()
 envg$EXPENV$exp_dir <- NuevoExp
 envg$EXPENV$wf_dir <- NuevoFlow
-envg$EXPENV$wf_dir_local <- NuevoFlowLocal
+envg$EXPENV$wf_dir_local <- NuevoFlow
 
 envg$EXPENV$repo_dir <- "~/labo2024v1/"
 envg$EXPENV$datasets_dir <- "~/buckets/b1/datasets/"
