@@ -16,10 +16,13 @@ envg <- env()
 # AK Creo las variables para mi gusto y seguimiento
 # copiado con estilo del script Z505
 
-Experimiento_id <- "_Exp17_ak_500" # Acá pongo el número de nuestro experimento
+Experimiento_id <- "_fin_2" # Acá pongo el número de nuestro experimento
 # la idea es poner la numeración que nos cierre
 NuevoExp <- paste0("~/buckets/b1/exp/","Experimento_", Experimiento_id, "/")
 NuevoFlow <- paste0("~/buckets/b1/flow/",Experimiento_id,"/")
+
+dir.create(NuevoExp, showWarnings = FALSE)
+dir.create(NuevoFlow, showWarnings = FALSE)
 
 CA1 <- paste0("CA0-sem","_", Experimiento_id)
 DR1 <- paste0("DR0-sem","_", Experimiento_id)
@@ -122,7 +125,7 @@ DR_drifting_baseline <- function( pmyexp, pinputexps, pserver="local")
   param_local$variables_intrames <- TRUE
   # valores posibles
   #  "ninguno", "rank_simple", "rank_cero_fijo", "deflacion", "estandarizar"
-  param_local$metodo <- "ninguno" #ninguno en lugar de rank simple
+  param_local$metodo <- "rank_simple" #dejo rank simple
 
   return( exp_correr_script( param_local ) ) # linea fija
 }
@@ -186,15 +189,15 @@ TS_strategy_baseline_202109 <- function( pmyexp, pinputexps, pserver="local")
 
 
   param_local$future <- c(202109) #para esta arranco de 202003, evitando 202006
-  param_local$final_train <- c(202107, 202106, 202105, 202104, 202103, 202102, 202101, 202012, 202011, 202010, 202009, 202008,202007,202005,202004,202003)
+  param_local$final_train <- c(202107, 202106, 202105, 202104, 202103, 202102, 202101, 202012, 202011, 202010, 202009, 202008,202007,202005,202004,202003,202002,202001,201912)
 
 
-  param_local$train$training <- c(202105, 202104, 202103, 202102, 202101, 202012, 202011, 202010, 202009, 202008,202007,202005,202004,202003)
-  param_local$train$validation <- c(202106)
+  param_local$train$training <- c( 202104, 202103, 202102, 202101, 202012, 202011, 202010, 202009, 202008,202007,202005,202004,202003, 202002,202001,201912)
+  param_local$train$validation <- c(202106, 202105)
   param_local$train$testing <- c(202107)
 
   # undersampling  baseline
-  param_local$train$undersampling <- 0.2  # dejo undersampling 0.2
+  param_local$train$undersampling <- 0.3  # dejo undersampling 0.3
 
   return( exp_correr_script( param_local ) ) # linea fija
 }
@@ -209,15 +212,15 @@ TS_strategy_baseline_202107 <- function( pmyexp, pinputexps, pserver="local")
 
 
   param_local$future <- c(202107)
-  param_local$final_train <- c(202105, 202104, 202103, 202102, 202101, 202012, 202011, 202010, 202009, 202008,202007,202005,202004,202003)
+  param_local$final_train <- c(202105, 202104, 202103, 202102, 202101, 202012, 202011, 202010, 202009, 202008,202007,202005,202004,202003,202002,202001,201912)
 
 
-  param_local$train$training <- c(202103, 202102, 202101, 202012, 202011, 202010, 202009, 202008, 202007, 202005,202004,202003)
-  param_local$train$validation <- c(202104)
+  param_local$train$training <- c(202102, 202101, 202012, 202011, 202010, 202009, 202008, 202007, 202005,202004,202003,202002,202001,201912)
+  param_local$train$validation <- c(202104,202103)
   param_local$train$testing <- c(202105)
 
   # undersampling  baseline
-  param_local$train$undersampling <- 0.2
+  param_local$train$undersampling <- 0.3
 
   return( exp_correr_script( param_local ) ) # linea fija
 }
@@ -274,7 +277,7 @@ HT_tuning_baseline <- function( pmyexp, pinputexps, pserver="local")
 
 
   # una Beyesian de Guantes Blancos, solo hace 15 iteraciones
-  param_local$bo_iteraciones <- 75 # iteraciones de la Optimizacion Bayesiana
+  param_local$bo_iteraciones <- 100 # iteraciones de la Optimizacion Bayesiana
 
   return( exp_correr_script( param_local ) ) # linea fija
 }
@@ -300,7 +303,7 @@ ZZ_final_baseline <- function( pmyexp, pinputexps, pserver="local")
   param_local$graficar$ventana_suavizado <- 2001L
 
   # Una corrida de Guantes Blancos solo usa 5 semillas
-  param_local$qsemillas <- 5
+  param_local$qsemillas <- 7
 
   return( exp_correr_script( param_local ) ) # linea fija
 }
@@ -327,7 +330,7 @@ ZZ_final_semillerio_baseline <- function( pmyexp, pinputexps, pserver="local")
 
   # El parametro fundamental de semillerio
   # Es la cantidad de LightGBM's que ensamblo
-  param_local$semillerio <- 20
+  param_local$semillerio <- 25
 
   return( exp_correr_script( param_local ) ) # linea fija
 }
