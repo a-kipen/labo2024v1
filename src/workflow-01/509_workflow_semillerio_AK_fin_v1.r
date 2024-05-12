@@ -344,18 +344,18 @@ corrida_baseline_semillerio_202109 <- function( pnombrewf, pvirgen=FALSE )
 {
   if( -1 == exp_wf_init( pnombrewf, pvirgen) ) return(0) # linea fija
 
-  DT_incorporar_dataset_baseline( DT1-sem, "competencia_2024.csv.gz")
-  CA_catastrophe_baseline( CA1-sem, DT1-sem )
+  DT_incorporar_dataset_baseline( DT1, "competencia_2024.csv.gz")
+  CA_catastrophe_baseline( CA1, DT1 )
 
-  DR_drifting_baseline( DR1-sem, CA1-sem )
-  FE_historia_baseline( FE1-sem, DR1-sem )
+  DR_drifting_baseline( DR1, CA1 )
+  FE_historia_baseline( FE1, DR1 )
 
-  TS_strategy_baseline_202109( TS1-sem, FE1-sem )
+  TS_strategy_baseline_202109( TS1, FE1 )
 
-  HT_tuning_baseline( HT1-sem, TS1-sem )
+  HT_tuning_baseline( HT1, TS1 )
 
   # El ZZ depente de HT y TS
-  ZZ_final_semillerio_baseline( ZZ1-sem, c(HT1-sem,TS1-sem) )
+  ZZ_final_semillerio_baseline( ZZ1, c(HT1,TS1) )
 
 
   exp_wf_end( pnombrewf, pvirgen ) # linea fija
@@ -372,18 +372,18 @@ corrida_baseline_semillerio_202107 <- function( pnombrewf, pvirgen=FALSE )
 {
   if( -1 == exp_wf_init( pnombrewf, pvirgen) ) return(0) # linea fija
 
-  DT_incorporar_dataset_baseline( DT1-sem, "competencia_2024.csv.gz")
-  CA_catastrophe_baseline( CA1-sem, DT1-sem )
+  DT_incorporar_dataset_baseline( DT1, "competencia_2024.csv.gz")
+  CA_catastrophe_baseline( CA1, DT1 )
 
-  DR_drifting_baseline( DR1-sem, CA1-sem )
-  FE_historia_baseline( FE1-sem, DR1-sem )
+  DR_drifting_baseline( DR1, CA1 )
+  FE_historia_baseline( FE1, DR1 )
 
-  TS_strategy_baseline_202107( TS2-sem, FE1-sem )
+  TS_strategy_baseline_202107( TS2, FE1 )
 
-  HT_tuning_baseline( HT2-sem, TS2-sem )
+  HT_tuning_baseline( HT2, TS2 )
 
   # El ZZ depente de HT y TS
-  ZZ_final_semillerio_baseline( ZZ2-sem, c(HT2-sem,TS2-sem) )
+  ZZ_final_semillerio_baseline( ZZ2, c(HT2,TS2) )
 
 
   exp_wf_end( pnombrewf, pvirgen ) # linea fija
