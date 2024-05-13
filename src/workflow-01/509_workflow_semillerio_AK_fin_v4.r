@@ -21,6 +21,10 @@ Experimiento_id <- "_fin_ak_4" # Acá pongo el número de nuestro experimento
 NuevoExp <- paste0("~/buckets/b1/exp/","Experimento_", Experimiento_id, "/")
 NuevoFlow <- paste0("~/buckets/b1/flow/",Experimiento_id,"/")
 
+
+dir.create(NuevoExp, showWarnings = FALSE)
+dir.create(NuevoFlow, showWarnings = FALSE)
+
 CA1 <- paste0("CA0-sem","_", Experimiento_id)
 DR1 <- paste0("DR0-sem","_", Experimiento_id)
 DT1 <- paste0("DT0-sem","_", Experimiento_id)
