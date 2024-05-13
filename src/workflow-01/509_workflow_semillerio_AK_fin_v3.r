@@ -277,7 +277,7 @@ HT_tuning_baseline <- function( pmyexp, pinputexps, pserver="local")
 
 
   # una Beyesian de Guantes Blancos, solo hace 15 iteraciones
-  param_local$bo_iteraciones <- 15 # iteraciones de la Optimizacion Bayesiana, bajo el numero porque encojo el espacio a la zona anterior
+  param_local$bo_iteraciones <- 16 # iteraciones de la Optimizacion Bayesiana, bajo el numero porque encojo el espacio a la zona anterior
 
   return( exp_correr_script( param_local ) ) # linea fija
 }
