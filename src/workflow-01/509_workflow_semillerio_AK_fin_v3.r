@@ -154,7 +154,7 @@ FE_historia_baseline <- function( pmyexp, pinputexps, pserver="local")
   param_local$Tendencias1$ratiomax <- FALSE
 
   # baseline
-  param_local$Tendencias2$run <- TRUE
+  param_local$Tendencias2$run <- FALSE
   param_local$Tendencias2$ventana <- 6
   param_local$Tendencias2$tendencia <- TRUE
   param_local$Tendencias2$minimo <- FALSE
@@ -269,15 +269,15 @@ HT_tuning_baseline <- function( pmyexp, pinputexps, pserver="local")
 
     extra_trees = FALSE,
     # Quasi  baseline, el minimo learning_rate es 0.02 !!
-    learning_rate = c( 0.02, 0.035 ),
-    feature_fraction = c( 0.45, 0.75 ),
-    num_leaves = c( 150L, 1000L,  "integer" ),
-    min_data_in_leaf = c( 80L, 200L, "integer" )
+    learning_rate = c( 0.02, 0.033 ),
+    feature_fraction = c( 0.45, 0.7 ),
+    num_leaves = c( 150L, 900L,  "integer" ),
+    min_data_in_leaf = c( 80L, 175L, "integer" )
   )
 
 
   # una Beyesian de Guantes Blancos, solo hace 15 iteraciones
-  param_local$bo_iteraciones <- 50 # iteraciones de la Optimizacion Bayesiana, bajo el numero porque encojo el espacio a la zona anterior
+  param_local$bo_iteraciones <- 15 # iteraciones de la Optimizacion Bayesiana, bajo el numero porque encojo el espacio a la zona anterior
 
   return( exp_correr_script( param_local ) ) # linea fija
 }
